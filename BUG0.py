@@ -45,7 +45,7 @@ class Bug:
                     self.boundaryOfObstacle_y.append(poz_y)
 
 
-    # Realizam o miscare simpla spre punctul de sosire in conditiile in care nu suntem ingraditi de vreun obstacol
+    # Realizam o miscare simpla spre punctul de scop in conditiile in care nu suntem ingraditi de vreun obstacol
     # de care ne-am putea lovi in imediata apropiere
     def simpleMove(self):
         return self.road_x[-1] + np.sign(self.goal_point_x - self.road_x[-1]), \
@@ -98,8 +98,8 @@ class Bug:
 
         # Daca robotul porneste din vecinatatea unui obstacol ( se afla pe frontiera ) schimbam tipul de deplasare
         for ob_x, ob_y in zip(self.boundaryOfObstacle_x, self.boundaryOfObstacle_y):
-            if self.road_x[-1] == ob_x and self.road_y[-1] == ob_y:
-                move_dir = "moveToNextObstacle"
+            if self.road_x[-1] == ob_x and self.road_y[-1] == ob_y: # verificam daca punctul initial se afla pe frontiera unui obstacol
+                move_dir = "moveToNextObstacle" # miscare pe frontiera
                 break
 
         visited_x = []
